@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScoreKeeper</title>
+    <style>
+      body {
+        text-align: center;
+        font-size: x-large;
+      }
+      button {
+        font-size: x-large;
+        border-radius: 30%;
+        padding: 1%;
+        border-style: solid;
+        border-color: transparent;
+      }
+      #reset {
+        background-color: rgb(253, 253, 6);
+      }
+      .red {
+        color: red;
+      }
+      .green {
+        color: green;
+      }
+      #score {
+        color: rgb(255, 102, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <h1><span class="red">Score</span><span class="green">Keeper</span></h1>
+    <p id="score">Score: 0 - 0</p>
+    <section class="s">
+      <button id="p1">Player-1</button>
+      <button id="p2">Player-2</button>
+      <button id="reset">Reset</button>
+    </section>
+    <script>
+      let p1 = 0;
+      let p2 = 0;
+      let score = document.getElementById("score");
+      let a = document.getElementById("p1");
+      let b = document.getElementById("p2");
+      let reset = document.getElementById("reset");
+      let target = prompt("Enter the target");
+      function resetter() {
+        a.style.backgroundColor = "#ffffff";
+        b.style.backgroundColor = "#ffffff";
+        p1 = 0;
+        p2 = 0;
+        score.innerText = `Score: ${p1} - ${p2}`;
+      }
+      a.addEventListener("click", function () {
+        p1++;
+        score.innerText = `Score: ${p1} - ${p2}`;
+        if (p1 == target) {
+          a.style.backgroundColor = "#88ff00";
+          b.style.backgroundColor = "#ff1100";
+          score.innerText = "Player-1 Wins";
+        }
+        if (p1 > target) {
+          resetter();
+        }
+      });
+      b.addEventListener("click", function () {
+        p2++;
+        score.innerText = `Score: ${p1} - ${p2}`;
+        if (p2 == target) {
+          b.style.backgroundColor = "#88ff00";
+          a.style.backgroundColor = "#ff1100";
+          score.innerText = "Player-2 Wins";
+        }
+        if (p2 > target) {
+          resetter();
+        }
+      });
+      reset.addEventListener("click", function () {
+        resetter();
+      });
+    </script>
+  </body>
+</html>
